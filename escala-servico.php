@@ -22,6 +22,9 @@ if (!defined('ABSPATH')) {
 }
 
 
+require_once plugin_dir_path(__FILE__) . 'vendor/autoload.php';
+
+
 // Registra o custom post type para "Escala de Serviço"
 function escsrv_register_custom_post_type()
 {
