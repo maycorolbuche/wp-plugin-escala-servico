@@ -12,11 +12,6 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Este plugin serve para criar escalas de serviço para sua igreja ou evento.
 
-== Screenshots ==
-
-1. Cadastre as imagens e vídeos para serem exibidos no outdoor
-2. Projete o outdoor na tela para fazer a divulgação de seus projetos e eventos
-
 == Changelog ==
 
 = 1.0.0 =
