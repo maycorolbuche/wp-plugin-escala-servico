@@ -1,0 +1,48 @@
+.escsrv_escala,
+.escsrv_escala td {
+    border: 1px solid #000000;
+    border-collapse: collapse;
+    padding: 0;
+    margin: 0;
+}
+
+.escsrv_escala .escsrv_escala_semana th {
+    background: #000;
+    color: #FFF;
+    padding: 2px;
+    text-transform: uppercase;
+}
+
+.escsrv_escala .escsrv_escala_dia {
+    background: #CCC;
+    font-weight: bold;
+    text-align: right;
+    font-size: 14px;
+    padding: 2px 5px;
+}
+
+.escsrv_escala .escsrv_escala_item {
+    background: #CCC;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 2px 5px;
+}
+
+.escsrv_escala input {
+    width: calc(100% - 9px);
+    padding: 6px 4px;
+    border: 0;
+    background: #f7f7c6;
+}
+
+.escsrv_botao {
+    background: #2271b1;
+    border-color: #2271b1;
+    color: #fff;
+    text-decoration: none;
+    border: 0;
+    padding: 12px 30px;
+    cursor: pointer;
+    float: right;
+    margin-left: 5px;
+}
