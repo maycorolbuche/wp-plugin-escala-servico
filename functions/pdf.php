@@ -28,7 +28,7 @@ function escsrv_generate_pdf($request)
 
     $output = "";
 
-    $css = <<<CSS
+    $output .= "<style>
         body { font-family: Helvetica, sans-serif; }
         .escsrv_escala,.escsrv_escala td{
             width:100%;
@@ -46,11 +46,11 @@ function escsrv_generate_pdf($request)
             text-transform: uppercase;
         }
         .escsrv_escala .escsrv_escala_dia{
-        background: #CCC;
-        font-weight: bold;
-        text-align: right;
-        font-size: 14px;
-        padding: 8px;
+            background: #CCC;
+            font-weight: bold;
+            text-align: right;
+            font-size: 14px;
+            padding: 8px;
         }
         .escsrv_escala .escsrv_escala_item{
             background: #CCC;
@@ -73,9 +73,7 @@ function escsrv_generate_pdf($request)
             float: right;
             margin-left: 5px;
         }
-    CSS;
-
-    $output .= "<style>$css</style>";
+    </style>";
 
     $output .= "<div style='text-align:center'>ESCALA DE SERVIÇO</div>";
     $output .= "<div style='text-align:center;font-weight:bold;text-transform: uppercase;font-size:26px;'>" . get_the_title($post->ID) . "</div>";

@@ -37,15 +37,15 @@ function escsrv_meta_box_callback($post)
 
     if (!empty($itens_da_escala) && is_array($itens_da_escala)) {
         foreach ($itens_da_escala as $index => $item) {
-            echo escsrv_render_item_fields($item, $index);
+            echo escsrv_render_item_fields($item, esc_html($index));
         }
     } else {
         // Renderiza itens default pra começar
-        echo escsrv_render_item_fields(['nome' => 'Abrir Porta', 'semana' => 7, 'ordem' => 1]);
-        echo escsrv_render_item_fields(['nome' => 'Recepção', 'semana' => 7, 'ordem' => 2]);
-        echo escsrv_render_item_fields(['nome' => 'Som', 'semana' => 1, 'ordem' => 1]);
-        echo escsrv_render_item_fields(['nome' => 'Recepção', 'semana' => 1, 'ordem' => 2]);
-        echo escsrv_render_item_fields(['nome' => 'Som', 'semana' => 4, 'ordem' => 1]);
+        echo escsrv_render_item_fields(['nome' => esc_html('Abrir Porta'), 'semana' => esc_html(7), 'ordem' => esc_html(1)]);
+        echo escsrv_render_item_fields(['nome' => esc_html('Recepção'), 'semana' => esc_html(7), 'ordem' => esc_html(2)]);
+        echo escsrv_render_item_fields(['nome' => esc_html('Som'), 'semana' => esc_html(1), 'ordem' => esc_html(1)]);
+        echo escsrv_render_item_fields(['nome' => esc_html('Recepção'), 'semana' => esc_html(1), 'ordem' => esc_html(2)]);
+        echo escsrv_render_item_fields(['nome' => esc_html('Som'), 'semana' => esc_html(4), 'ordem' => esc_html(1)]);
     }
 
     echo '</div>';
@@ -162,7 +162,7 @@ function escsrv_display_itens_da_escala()
     foreach ($grid["meses"] as $item) {
         if ($item["dif"] <> 0) {
             $output .= "<a href='?mes=" . $item["mes"] . "&ano=" . $item["ano"] . "'>" . $item["titulo"] . "</a>";
-        } elseif ($item["mes"] <> date("m") || $item["ano"] <> date("Y")) {
+        } elseif ($item["mes"] <> gmdate("m") || $item["ano"] <> gmdate("Y")) {
             $output .= "<a href='?'>Hoje</a>";
         }
     }
@@ -231,7 +231,7 @@ add_shortcode('escsrv_escala_itens', 'escsrv_display_itens_da_escala');
 function escsrv_process_form_data()
 {
     // Verifica se o formulário foi submetido
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['escsrv_nome'])) {
+    if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['escsrv_nome'])) {
         // Sanitiza e processa os dados do formulário
         $itens = $_POST['escsrv_nome'];
         // (Esse $_POST recebe uma array. Os dados estão sendo sanitizados dentro do foreach)
@@ -272,9 +272,9 @@ add_filter('the_content', 'escsrv_remove_wpautop_from_shortcode', 0);
 
 function escsrv_monta_grid($post_id)
 {
-    $mes = intval($_GET["mes"] ?? date("m"));
-    $ano = intval($_GET["ano"] ?? date("Y"));;
-    $dias = date("t", mktime(0, 0, 0, $mes, '01', $ano));
+    $mes = intval($_GET["mes"] ?? gmdate("m"));
+    $ano = intval($_GET["ano"] ?? gmdate("Y"));;
+    $dias = gmdate("t", mktime(0, 0, 0, $mes, '01', $ano));
 
     $dias_semana = ['Domingos', 'Segundas', 'Terças', 'Quartas', 'Quintas', 'Sextas', 'Sábados'];
     $meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
@@ -323,7 +323,7 @@ function escsrv_monta_grid($post_id)
         $dia = $i;
         $date = strtotime("$ano-$mes-$dia");
 
-        $semana = date("w", $date);
+        $semana = gmdate("w", $date);
         $ksemana = ($semana >= 6 ? 0 : $semana + 1);
 
         $grid["dias"] = $i;
