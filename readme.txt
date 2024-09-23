@@ -12,6 +12,15 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Este plugin serve para criar escalas de serviço para sua igreja ou evento.
 
+== Screenshots ==
+
+1. Crie escalas de serviço, com campos para preenchimento.
+2. Crie escalas de serviço, com campos para preenchimento.
+3. Gere PDF das suas escalas.
+4. Gerencie suas escalas. Crie quantas escalas precisar.
+4. Gerencie suas escalas. Crie quantas escalas precisar.
+5. Cadastre os itens da sua escala.
+
 == Changelog ==
 
 = 1.0.0 =
